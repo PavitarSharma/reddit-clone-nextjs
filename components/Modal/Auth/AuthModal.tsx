@@ -15,6 +15,7 @@ import OAuthButtons from "./OAuthButtons";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebase";
 import { useEffect } from "react";
+import ResetPassword from "./ResetPassword";
 
 const AuthModal = () => {
   const [modalState, setModalState] = useRecoilState(authModalState);
@@ -29,6 +30,7 @@ const AuthModal = () => {
 
   useEffect(() => {
     if (user) handleClose();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (
@@ -55,12 +57,19 @@ const AuthModal = () => {
               justify="center"
               width="70%"
             >
-              <OAuthButtons />
+              {
+                modalState.view === "login" || modalState.view === "signup" ? (
+                  <>
+                  <OAuthButtons />
               <Text color="gray.500" fontWeight={700}>
                 OR
               </Text>
               <AuthInputs />
-              {/* <ResetPassword /> */}
+                  </>
+                ) : (<ResetPassword />)
+              }
+              
+              
             </Flex>
           </ModalBody>
         </ModalContent>

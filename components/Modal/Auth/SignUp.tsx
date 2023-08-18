@@ -122,7 +122,7 @@ const SignUp = () => {
         type="submit"
         isLoading={loading}
       >
-        Log In
+        Sign Up
       </Button>
       <Flex fontSize="9pt" justifyContent="center">
         <Text mr={1}>Alrady a redditor?</Text>
